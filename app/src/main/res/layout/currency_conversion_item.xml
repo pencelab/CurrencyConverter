@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_view_margin">
+
+    <RelativeLayout
+        android:id="@+id/currency_conversion_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_view_padding">
+
+        <LinearLayout
+            android:id="@+id/currency_conversion_content_block"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="7">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/currency_conversion_item_info_symbol_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_currency_symbol"
+                    android:gravity="center"
+                    android:text="ABC"/>
+
+                <TextView
+                    android:id="@+id/currency_conversion_item_info_amount_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_currency_amount"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:gravity="center"
+                    android:text="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_currency_symbol"
+                    android:gravity="center"
+                    android:text="–"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/currency_conversion_item_info_symbol_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_currency_symbol"
+                    android:gravity="center"
+                    android:text="ABC"/>
+
+                <TextView
+                    android:id="@+id/currency_conversion_item_info_amount_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_currency_amount"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:gravity="center"
+                    android:text="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/currency_conversion_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/currency_conversion_content_block"
+            android:layout_marginTop="@dimen/card_view_small_info_margin"
+            android:text="2012-12-01"
+            android:textSize="@dimen/text_size_card_view_small_info"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
