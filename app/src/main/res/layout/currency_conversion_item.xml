@@ -33,6 +33,14 @@
                     android:text="ABC"/>
 
                 <TextView
+                    android:id="@+id/currency_conversion_item_info_location_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_card_view_small_info"
+                    android:gravity="center"
+                    android:text="Country Currency"/>
+
+                <TextView
                     android:id="@+id/currency_conversion_item_info_amount_left"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,6 +80,14 @@
                     android:textSize="@dimen/text_size_currency_symbol"
                     android:gravity="center"
                     android:text="ABC"/>
+
+                <TextView
+                    android:id="@+id/currency_conversion_item_info_location_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_card_view_small_info"
+                    android:gravity="center"
+                    android:text="Country Currency"/>
 
                 <TextView
                     android:id="@+id/currency_conversion_item_info_amount_right"
