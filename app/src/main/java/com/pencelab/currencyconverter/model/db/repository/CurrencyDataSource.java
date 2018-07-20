@@ -24,13 +24,8 @@ public class CurrencyDataSource implements CurrencyRepository {
     }
 
     @Override
-    public Flowable<Currency> getFlowableCurrencyById(@NonNull String symbol) {
-        return this.currencyDao.getFlowableCurrencyById(symbol);
-    }
-
-    @Override
-    public Flowable<List<Currency>> getFlowableCurrencyByLocation(@NonNull String location) {
-        return this.currencyDao.getFlowableCurrencyByLocation(location);
+    public Flowable<Currency> getFlowableCurrencyByCode(@NonNull String code) {
+        return this.currencyDao.getFlowableCurrencyByCode(code);
     }
 
     @Override
@@ -44,13 +39,8 @@ public class CurrencyDataSource implements CurrencyRepository {
     }
 
     @Override
-    public Maybe<Currency> getMaybeCurrencyById(@NonNull String symbol) {
-        return this.currencyDao.getMaybeCurrencyById(symbol);
-    }
-
-    @Override
-    public Maybe<List<Currency>> getMaybeCurrencyByLocation(@NonNull String location) {
-        return this.currencyDao.getMaybeCurrencyByLocation(location);
+    public Maybe<Currency> getMaybeCurrencyByCode(@NonNull String code) {
+        return this.currencyDao.getMaybeCurrencyByCode(code);
     }
 
     @Override

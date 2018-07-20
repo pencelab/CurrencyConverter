@@ -23,37 +23,37 @@ public interface CurrencyConversionDao {
 
     /**
      * Gets the CurrencyConversions from the table.
-     * @param baseSymbol: the base currency symbol.
-     * @param targetSymbol: the target currency symbol.
-     * @return the CurrencyConversions from the table that matches with the base symbol and target symbol
+     * @param baseCode: the base currency code.
+     * @param targetCode: the target currency code.
+     * @return the CurrencyConversions from the table that matches with the base code and target code
      * in a list ordered by date starting from the latest inserted or updated.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_symbol = :baseSymbol AND target_symbol = :targetSymbol ORDER BY date DESC")
-    Flowable<List<CurrencyConversion>> getFlowableCurrencyConversionsByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol);
+    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode AND target_code = :targetCode ORDER BY date DESC")
+    Flowable<List<CurrencyConversion>> getFlowableCurrencyConversionsByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
 
     /**
      * Gets the latest CurrencyConversion from the table.
-     * @param baseSymbol: the base currency symbol.
-     * @param targetSymbol: the target currency symbol.
-     * @return the latest CurrencyConversion from the table that matches with the base symbol and target symbol.
+     * @param baseCode: the base currency code.
+     * @param targetCode: the target currency code.
+     * @return the latest CurrencyConversion from the table that matches with the base code and target code.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_symbol = :baseSymbol AND target_symbol = :targetSymbol ORDER BY date DESC LIMIT 1")
-    Flowable<List<CurrencyConversion>> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol);
+    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode AND target_code = :targetCode ORDER BY date DESC LIMIT 1")
+    Flowable<List<CurrencyConversion>> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
 
     /**
      * Gets the latest distinct CurrencyConversions from the table.
      * @return the latest distinct CurrencyConversions from the table.
      */
-    @Query("SELECT * FROM CurrencyConversion GROUP BY base_symbol, target_symbol ORDER BY date DESC")
+    @Query("SELECT * FROM CurrencyConversion GROUP BY base_code, target_code ORDER BY date DESC")
     Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversions();
 
     /**
      * Gets the latest distinct CurrencyConversions from the table.
-     * @param baseSymbol: the base currency symbol.
-     * @return the latest distinct CurrencyConversions from the table that match with the base symbol.
+     * @param baseCode: the base currency code.
+     * @return the latest distinct CurrencyConversions from the table that match with the base code.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_symbol = :baseSymbol GROUP BY target_symbol ORDER BY date DESC")
-    Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversionsByBase(@NonNull String baseSymbol);
+    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode GROUP BY target_code ORDER BY date DESC")
+    Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversionsByBase(@NonNull String baseCode);
 
     /**
      * Gets all the CurrencyConversions from the table.
@@ -64,37 +64,37 @@ public interface CurrencyConversionDao {
 
     /**
      * Gets the CurrencyConversions from the table.
-     * @param baseSymbol: the base currency symbol.
-     * @param targetSymbol: the target currency symbol.
-     * @return the CurrencyConversions from the table that matches with the base symbol and target symbol
+     * @param baseCode: the base currency code.
+     * @param targetCode: the target currency code.
+     * @return the CurrencyConversions from the table that matches with the base code and target code
      * in a list ordered by date starting from the latest inserted or updated.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_symbol = :baseSymbol AND target_symbol = :targetSymbol ORDER BY date DESC")
-    Maybe<List<CurrencyConversion>> getMaybeCurrencyConversionsByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol);
+    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode AND target_code = :targetCode ORDER BY date DESC")
+    Maybe<List<CurrencyConversion>> getMaybeCurrencyConversionsByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
 
     /**
      * Gets the latest CurrencyConversion from the table.
-     * @param baseSymbol: the base currency symbol.
-     * @param targetSymbol: the target currency symbol.
-     * @return the latest CurrencyConversion from the table that matches with the base symbol and target symbol.
+     * @param baseCode: the base currency code.
+     * @param targetCode: the target currency code.
+     * @return the latest CurrencyConversion from the table that matches with the base code and target code.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_symbol = :baseSymbol AND target_symbol = :targetSymbol ORDER BY date DESC LIMIT 1")
-    Maybe<List<CurrencyConversion>> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol);
+    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode AND target_code = :targetCode ORDER BY date DESC LIMIT 1")
+    Maybe<List<CurrencyConversion>> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
 
     /**
      * Gets the latest distinct CurrencyConversions from the table.
      * @return the latest distinct CurrencyConversions from the table.
      */
-    @Query("SELECT * FROM CurrencyConversion GROUP BY base_symbol, target_symbol ORDER BY date DESC")
+    @Query("SELECT * FROM CurrencyConversion GROUP BY base_code, target_code ORDER BY date DESC")
     Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversions();
 
     /**
      * Gets the latest distinct CurrencyConversions from the table.
-     * @param baseSymbol: the base currency symbol.
-     * @return the latest distinct CurrencyConversions from the table that match with the base symbol.
+     * @param baseCode: the base currency code.
+     * @return the latest distinct CurrencyConversions from the table that match with the base code.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_symbol = :baseSymbol GROUP BY target_symbol ORDER BY date DESC")
-    Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversionsByBase(@NonNull String baseSymbol);
+    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode GROUP BY target_code ORDER BY date DESC")
+    Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversionsByBase(@NonNull String baseCode);
 
     /**
      * Inserts a CurrencyConversion into the database. If the Currency already exists, replaces it.

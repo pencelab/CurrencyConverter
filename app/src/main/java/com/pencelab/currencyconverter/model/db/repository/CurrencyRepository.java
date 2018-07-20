@@ -11,13 +11,11 @@ import io.reactivex.Maybe;
 
 public interface CurrencyRepository {
     Flowable<List<Currency>> getFlowableCurrencies();
-    Flowable<Currency> getFlowableCurrencyById(@NonNull String symbol);
-    Flowable<List<Currency>> getFlowableCurrencyByLocation(@NonNull String location);
+    Flowable<Currency> getFlowableCurrencyByCode(@NonNull String code);
     Flowable<List<Currency>> getFlowableCurrencyByName(@NonNull String name);
 
     Maybe<List<Currency>> getMaybeCurrencies();
-    Maybe<Currency> getMaybeCurrencyById(@NonNull String symbol);
-    Maybe<List<Currency>> getMaybeCurrencyByLocation(@NonNull String location);
+    Maybe<Currency> getMaybeCurrencyByCode(@NonNull String code);
     Maybe<List<Currency>> getMaybeCurrencyByName(@NonNull String name);
 
     void insertOrUpdateCurrency(@NonNull Currency currency);

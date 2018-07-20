@@ -24,13 +24,13 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     }
 
     @Override
-    public Flowable<List<CurrencyConversion>> getFlowableCurrencyConversionsByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol) {
-        return this.currencyConversionDao.getFlowableCurrencyConversionsByBaseAndTarget(baseSymbol, targetSymbol);
+    public Flowable<List<CurrencyConversion>> getFlowableCurrencyConversionsByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
+        return this.currencyConversionDao.getFlowableCurrencyConversionsByBaseAndTarget(baseCode, targetCode);
     }
 
     @Override
-    public Flowable<List<CurrencyConversion>> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol) {
-        return this.currencyConversionDao.getFlowableLatestCurrencyConversionByBaseAndTarget(baseSymbol, targetSymbol);
+    public Flowable<List<CurrencyConversion>> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
+        return this.currencyConversionDao.getFlowableLatestCurrencyConversionByBaseAndTarget(baseCode, targetCode);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     }
 
     @Override
-    public Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversionsByBase(@NonNull String baseSymbol) {
-        return this.currencyConversionDao.getFlowableLatestDistinctCurrencyConversionsByBase(baseSymbol);
+    public Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversionsByBase(@NonNull String baseCode) {
+        return this.currencyConversionDao.getFlowableLatestDistinctCurrencyConversionsByBase(baseCode);
     }
 
     @Override
@@ -49,13 +49,13 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     }
 
     @Override
-    public Maybe<List<CurrencyConversion>> getMaybeCurrencyConversionsByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol) {
-        return this.currencyConversionDao.getMaybeCurrencyConversionsByBaseAndTarget(baseSymbol, targetSymbol);
+    public Maybe<List<CurrencyConversion>> getMaybeCurrencyConversionsByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
+        return this.currencyConversionDao.getMaybeCurrencyConversionsByBaseAndTarget(baseCode, targetCode);
     }
 
     @Override
-    public Maybe<List<CurrencyConversion>> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseSymbol, @NonNull String targetSymbol) {
-        return this.currencyConversionDao.getMaybeLatestCurrencyConversionByBaseAndTarget(baseSymbol, targetSymbol);
+    public Maybe<List<CurrencyConversion>> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
+        return this.currencyConversionDao.getMaybeLatestCurrencyConversionByBaseAndTarget(baseCode, targetCode);
     }
 
     @Override
@@ -64,8 +64,8 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     }
 
     @Override
-    public Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversionsByBase(@NonNull String baseSymbol) {
-        return this.currencyConversionDao.getMaybeLatestDistinctCurrencyConversionsByBase(baseSymbol);
+    public Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversionsByBase(@NonNull String baseCode) {
+        return this.currencyConversionDao.getMaybeLatestDistinctCurrencyConversionsByBase(baseCode);
     }
 
     @Override

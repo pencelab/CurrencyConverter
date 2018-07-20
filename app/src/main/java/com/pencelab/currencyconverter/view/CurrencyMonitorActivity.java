@@ -7,6 +7,7 @@ import com.pencelab.currencyconverter.R;
 import com.pencelab.currencyconverter.common.Utils;
 import com.pencelab.currencyconverter.dependencyinjection.App;
 import com.pencelab.currencyconverter.http.CurrencyLayerService;
+import com.pencelab.currencyconverter.model.db.data.Currency;
 
 import java.util.concurrent.TimeUnit;
 

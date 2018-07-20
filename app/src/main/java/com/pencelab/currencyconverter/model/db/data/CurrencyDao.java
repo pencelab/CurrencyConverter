@@ -23,19 +23,11 @@ public interface CurrencyDao {
 
     /**
      * Gets the Currency from the table.
-     * @param symbol: the currency symbol.
-     * @return the Currency from the table that matches with the symbol.
+     * @param code: the currency code.
+     * @return the Currency from the table that matches with the code.
      */
-    @Query("SELECT * FROM Currency WHERE symbol = :symbol")
-    Flowable<Currency> getFlowableCurrencyById(@NonNull String symbol);
-
-    /**
-     * Gets the Currencies from the table.
-     * @param location: the currency location.
-     * @return all the Currencies from the table that match with the location in a list.
-     */
-    @Query("SELECT * FROM Currency WHERE location = :location")
-    Flowable<List<Currency>> getFlowableCurrencyByLocation(@NonNull String location);
+    @Query("SELECT * FROM Currency WHERE code = :code")
+    Flowable<Currency> getFlowableCurrencyByCode(@NonNull String code);
 
     /**
      * Gets the Currencies from the table.
@@ -54,19 +46,11 @@ public interface CurrencyDao {
 
     /**
      * Gets the Currency from the table.
-     * @param symbol: the currency symbol.
-     * @return the Currency from the table that matches with the symbol.
+     * @param code: the currency code.
+     * @return the Currency from the table that matches with the code.
      */
-    @Query("SELECT * FROM Currency WHERE symbol = :symbol")
-    Maybe<Currency> getMaybeCurrencyById(@NonNull String symbol);
-
-    /**
-     * Gets the Currencies from the table.
-     * @param location: the currency location.
-     * @return all the Currencies from the table that match with the location in a list.
-     */
-    @Query("SELECT * FROM Currency WHERE location = :location")
-    Maybe<List<Currency>> getMaybeCurrencyByLocation(@NonNull String location);
+    @Query("SELECT * FROM Currency WHERE code = :code")
+    Maybe<Currency> getMaybeCurrencyByCode(@NonNull String code);
 
     /**
      * Gets the Currencies from the table.

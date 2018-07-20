@@ -4,7 +4,7 @@ package com.pencelab.currencyconverter.model.db.data;
 
 Table Currency
 
-TEXT symbol -> Primary Key
+TEXT code -> Primary Key
 TEXT name
 TEXT location
 
@@ -20,26 +20,26 @@ public class Currency {
 
     @NonNull
     @PrimaryKey
-    @ColumnInfo(name = "symbol")
-    private final String symbol;
+    @ColumnInfo(name = "code")
+    private final String code;
 
     @NonNull
     @ColumnInfo(name = "name")
     private final String name;
 
     @NonNull
-    @ColumnInfo(name = "location")
-    private final String location;
+    @ColumnInfo(name = "symbol")
+    private final String symbol;
 
-    public Currency(@NonNull String symbol, @NonNull String name, @NonNull String location) {
-        this.symbol = symbol;
+    public Currency(@NonNull String code, @NonNull String name, @NonNull String symbol) {
+        this.code = code;
         this.name = name;
-        this.location = location;
+        this.symbol = symbol;
     }
 
     @NonNull
-    public String getSymbol() {
-        return this.symbol;
+    public String getCode() {
+        return this.code;
     }
 
     @NonNull
@@ -48,13 +48,13 @@ public class Currency {
     }
 
     @NonNull
-    public String getLocation() {
-        return this.location;
+    public String getSymbol() {
+        return this.symbol;
     }
 
     @Override
     public String toString() {
-        return "Symbol: " + this.symbol + " | Name: " + this.name + " | Location: " + this.location;
+        return "Code: " + this.code + " | Name: " + this.name + " | Symbol: " + this.symbol;
     }
 
 }

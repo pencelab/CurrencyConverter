@@ -1,0 +1,192 @@
+AED,United Arab Emirates Dirham,AED
+AFN,Afghan Afghani,؋
+ALL,Albanian Lek,Lek
+AMD,Armenian Dram,AMD
+ANG,Netherlands Antillian Guilder,ƒ
+AOA,Angolan Kwanza,Kz
+ARS,Argentine Peso,$
+AUD,Australian Dollar,$
+AWG,Aruban Florin,ƒ
+AZN,Azerbaijani Manat,ман.
+BAM,Bosnia-Herzegovina Convertible Mark,KM
+BBD,Barbados Dollar,$
+BDT,Bangladeshi Taka,BDT
+BGN,Bulgarian Lev,лв
+BHD,Bahraini Dinar,BHD
+BIF,Burundi Franc,BIF
+BMD,Bermudian Dollar,$
+BND,Brunei Dollar,$
+BOB,Bolivian Boliviano,$b
+BRL,Brazilian Real,R$
+BSD,Bahamian Dollar,$
+BTC,Bitcoin,Ƀ
+BTN,Bhutan Ngultrum,BTN
+BWP,Botswanian Pula,P
+BYN,Belarusian Ruble,Br
+BYR,Belarusian Ruble,BYR
+BZD,Belize Dollar,BZ$
+CAD,Canadian Dollar,$
+CDF,Congolese Franc,FrCD
+CHF,Swiss Franc,CHF
+CLF,Chilean Unidades de Fomento,CLF
+CLP,Chilean Peso,$
+CNY,Yuan (Chinese) Renminbi,¥
+COP,Colombian Peso,$
+CRC,Costa Rican Colon,₡
+CUC,Cuban Peso,$
+CUP,Cuban Peso,₱
+CVE,Cape Verde Escudo,CVE
+CZK,Czech Republic Koruna,Kč
+DJF,Djiboutian Franc,Fdj
+DKK,Danish Krone,kr
+DOP,Dominican Peso,RD$
+DZD,Algerian Dinar,DZD
+EGP,Egyptian Pound,£
+ERN,Eritrean Nakfa,Nfk
+ETB,Ethiopian Birr,ETB
+EUR,Euro,€
+FJD,Fiji Dollar,$
+FKP,Falkland Islands Pound,£
+GBP,British Pound,£
+GEL,Georgian Lari,GEL
+GGP,Guernsey Pound,£
+GHS,Ghanaian Cedi,GH₵
+GIP,Gibraltar Pound,£
+GMD,Gambian Dalasi,GMD
+GNF,Guinea Franc,GNF
+GTQ,Guatemalan Quetzal,Q
+GYD,Guyanan Dollar,$
+HKD,Hong Kong Dollar,$
+HNL,Honduran Lempira,L
+HRK,Croatian Kuna,kn
+HTG,Haitian Gourde,HTG
+HUF,Hungarian Forint,Ft
+IDR,Indonesian Rupiah,Rp
+ILS,Israeli Shekel,₪
+IMP,Isle of Man Pound,£
+INR,Indian Rupee,₹
+IQD,Iraqi Dinar,IQD
+IRR,Iranian Rial,﷼
+ISK,Icelandic Króna,kr
+JEP,Jersey Pound,£
+JMD,Jamaican Dollar,J$
+JOD,Jordanian Dinar,JOD
+JPY,Japanese Yen,¥
+KES,Kenyan Schilling,KES
+KGS,Kyrgyzstani Som,Ksh
+KHR,Kampuchean (Cambodian) Riel,៛
+KMF,Comoros Franc,KMF
+KPW,North Korean Won,₩
+KRW,(South) Korean Won,₩
+KWD,Kuwaiti Dinar,KWD
+KYD,Cayman Islands Dollar,$
+KZT,Kazakhstani Tenge,тңг.
+LAK,Lao Kip,₭
+LBP,Lebanese Pound,£
+LKR,Sri Lanka Rupee,₨
+LRD,Liberian Dollar,$
+LSL,Lesotho Loti,LSL
+LTL,Lithuanian Litas,Lt
+LVL,Latvian Lats,Ls
+LYD,Libyan Dinar,LYD
+MAD,Moroccan Dirham,MAD
+MDL,Moldovan Leu,MDL
+MGA,Malagasy Ariary,MGA
+MKD,Macedonian Denar,MKD
+MMK,Myanma Kyat,K
+MNT,Mongolian Tugrik,₮
+MOP,Macau Pataca,MOP
+MRO,Mauritanian Ouguiya,MRO
+MUR,Mauritius Rupee,₨
+MVR,Maldive Rufiyaa,MVR
+MWK,Malawi Kwacha,MWK
+MXN,Mexican Peso,$
+MYR,Malaysian Ringgit,RM
+MZN,Mozambican Metical,MTn
+NAD,Namibian Dollar,$
+NGN,Nigerian Naira,₦
+NIO,Nicaraguan Cordoba,C$
+NOK,Norwegian Kroner,kr
+NPR,Nepalese Rupee,₨
+NZD,New Zealand Dollar,$
+OMR,Omani Rial,﷼
+PAB,Panamanian Balboa,B/.
+PEN,Peruvian Nuevo Sol,S/.
+PGK,Papua New Guinea Kina,PGK
+PHP,Philippine Peso,₱
+PKR,Pakistan Rupee,₨
+PLN,Polish Zloty,zł
+PYG,Paraguay Guarani,Gs
+QAR,Qatari Rial,﷼
+RON,Romanian Leu,lei
+RSD,Serbian Dinar,дин.
+RUB,Russian Ruble,₽
+RWF,Rwanda Franc,RWF
+SAR,Saudi Arabian Riyal,﷼
+SBD,Solomon Islands Dollar,$
+SCR,Seychelles Rupee,₨
+SDG,Sudanese Pound,SDG
+SEK,Swedish Krona,kr
+SGD,Singapore Dollar,$
+SHP,St. Helena Pound,£
+SLL,Sierra Leone Leone,SLL
+SOS,Somali Schilling,S
+SRD,Surinamese Dollar,$
+STD,Sao Tome and Principe Dobra,STD
+SVC,El Salvador Colon,$
+SYP,Syrian Potmd,£
+SZL,Swaziland Lilangeni,SZL
+THB,Thai Baht,฿
+TJS,Tajikistani Somoni,ЅМ
+TMT,Turkmen Manat,m
+TND,Tunisian Dinar,TND
+TOP,Tongan Paanga,TOP
+TRY,Turkish Lira,TRY
+TTD,Trinidad and Tobago Dollar,TT$
+TWD,Taiwan Dollar,NT$
+TZS,Tanzanian Schilling,TZS
+UAH,Украинская гривна,грн
+UGX,Uganda Shilling,UGX
+USD,US Dollar,$
+UYU,Uruguayan Peso,$U
+UZS,Uzbekistan Som,UZS
+VEF,Venezualan Bolivar,Bs
+VND,Vietnamese Dong,₫
+VUV,Vanuatu Vatu,VUV
+WST,Samoan Tala,WST
+XAF,Communauté Financière Africaine BEAC, Francs,XAF
+XAG,Silver, Ounces,XAG
+XAU,Gold, Ounces,XAU
+XCD,East Caribbean Dollar,$
+XDR,International Monetary Fund (IMF) Special Drawing Rights,XDR
+XOF,Communauté Financière Africaine BCEAO - Francs,XOF
+XPF,Comptoirs Français du Pacifique Francs,XPF
+YER,Yemeni Rial,﷼
+ZAR,South African Rand,S
+ZMK,Zambian Kwacha,ZMK
+ZMW,Zambian Kwacha,ZK
+ZWL,Zimbabwean Dollar,$
+ADP,Andorran Peseta,ADP
+AFA,Afghanistan Afghani,AFA
+AOK,Angolan Kwanza,AOK
+BUK,Burma Kyat,BUK
+CYP,Cyprus Pound,CYP
+ECS,Ecuador Sucre,ECS
+EEK,Estonian Kroon (EEK),kr
+GHC,Ghanaian Cedi,¢
+GWP,Guinea-Bissau Peso,GWP
+IEP,Irish Punt,IEP
+MGF,Malagasy Franc,MGF
+MTL,Maltese Lira,MTL
+MXP,Mexican Peso,MXP
+MZM,Mozambique Metical,MZM
+SDP,Sudanese Pound,SDP
+SKK,Slovak Koruna,SKK
+SRG,Suriname Guilder,SRG
+TPE,East Timor Escudo,TPE
+XPD,Palladium Ounces,XPD
+XPT,Platinum, Ounces,XPT
+YDD,Democratic Yemeni Dinar,YDD
+YUD,New Yugoslavia Dinar,YUD
+ZRZ,Zaire Zaire,ZRZ
+ZWD,Zimbabwe Dollar,Z$
