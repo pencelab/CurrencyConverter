@@ -9,6 +9,7 @@ import com.pencelab.currencyconverter.model.db.data.Currency;
 import com.pencelab.currencyconverter.model.db.data.CurrencyConversion;
 import com.pencelab.currencyconverter.model.db.data.CurrencyConversionDao;
 import com.pencelab.currencyconverter.model.db.data.CurrencyDao;
+import com.pencelab.currencyconverter.model.db.data.WeatherDao;
 
 @Database(entities = {Currency.class, CurrencyConversion.class}, version = CurrenciesDatabase.VERSION)
 @TypeConverters({Converters.class})

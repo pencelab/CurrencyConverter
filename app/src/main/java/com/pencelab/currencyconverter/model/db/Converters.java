@@ -2,6 +2,8 @@ package com.pencelab.currencyconverter.model.db;
 
 import android.arch.persistence.room.TypeConverter;
 
+import com.pencelab.currencyconverter.common.BigDecimalFactory;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -19,12 +21,12 @@ public class Converters {
 
     @TypeConverter
     public static BigDecimal currencyValueFromLongValue(long value){
-        return new BigDecimal(value).scaleByPowerOfTen(-4);
+        return BigDecimalFactory.getBigDecimal(value);
     }
 
     @TypeConverter
     public static long currencyValueToLongValue(BigDecimal value){
-        return value.scaleByPowerOfTen(4).longValue();
+        return BigDecimalFactory.bigDecimalToLong(value);
     }
 
 }

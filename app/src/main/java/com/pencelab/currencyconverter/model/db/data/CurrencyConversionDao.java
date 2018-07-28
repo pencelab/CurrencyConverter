@@ -38,13 +38,13 @@ public interface CurrencyConversionDao {
      * @return the latest CurrencyConversion from the table that matches with the base code and target code.
      */
     @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode AND target_code = :targetCode ORDER BY date DESC LIMIT 1")
-    Flowable<List<CurrencyConversion>> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
+    Flowable<CurrencyConversion> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
 
     /**
      * Gets the latest distinct CurrencyConversions from the table.
      * @return the latest distinct CurrencyConversions from the table.
      */
-    @Query("SELECT * FROM CurrencyConversion GROUP BY base_code, target_code ORDER BY date DESC")
+    @Query("SELECT *, MAX(date) FROM CurrencyConversion GROUP BY base_code, target_code")
     Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversions();
 
     /**
@@ -52,7 +52,7 @@ public interface CurrencyConversionDao {
      * @param baseCode: the base currency code.
      * @return the latest distinct CurrencyConversions from the table that match with the base code.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode GROUP BY target_code ORDER BY date DESC")
+    @Query("SELECT *, MAX(date) FROM CurrencyConversion WHERE base_code = :baseCode GROUP BY target_code")
     Flowable<List<CurrencyConversion>> getFlowableLatestDistinctCurrencyConversionsByBase(@NonNull String baseCode);
 
     /**
@@ -79,13 +79,13 @@ public interface CurrencyConversionDao {
      * @return the latest CurrencyConversion from the table that matches with the base code and target code.
      */
     @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode AND target_code = :targetCode ORDER BY date DESC LIMIT 1")
-    Maybe<List<CurrencyConversion>> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
+    Maybe<CurrencyConversion> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode);
 
     /**
      * Gets the latest distinct CurrencyConversions from the table.
      * @return the latest distinct CurrencyConversions from the table.
      */
-    @Query("SELECT * FROM CurrencyConversion GROUP BY base_code, target_code ORDER BY date DESC")
+    @Query("SELECT *, MAX(date) FROM CurrencyConversion GROUP BY base_code, target_code")
     Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversions();
 
     /**
@@ -93,15 +93,22 @@ public interface CurrencyConversionDao {
      * @param baseCode: the base currency code.
      * @return the latest distinct CurrencyConversions from the table that match with the base code.
      */
-    @Query("SELECT * FROM CurrencyConversion WHERE base_code = :baseCode GROUP BY target_code ORDER BY date DESC")
+    @Query("SELECT *, MAX(date) FROM CurrencyConversion WHERE base_code = :baseCode GROUP BY target_code")
     Maybe<List<CurrencyConversion>> getMaybeLatestDistinctCurrencyConversionsByBase(@NonNull String baseCode);
 
     /**
-     * Inserts a CurrencyConversion into the database. If the Currency already exists, replaces it.
+     * Inserts a CurrencyConversion into the database. If the CurrencyConversion already exists, replaces it.
      * @param currencyConversion the CurrencyConversion to be inserted.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrUpdateCurrencyConversion(@NonNull CurrencyConversion currencyConversion);
+
+    /**
+     * Inserts all CurrencyConversions into the database. If any CurrencyConversion already exists, replaces it.
+     * @param currencyConversions the CurrencyConversions to be inserted.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertOrUpdateCurrencyConversions(CurrencyConversion... currencyConversions);
 
     /**
      * Delete all CurrencyConversions.

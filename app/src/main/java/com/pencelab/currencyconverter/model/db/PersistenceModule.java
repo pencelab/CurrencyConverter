@@ -24,10 +24,12 @@ import io.reactivex.Observable;
 @Module
 public class PersistenceModule {
 
+    private static final String DATABASE_FILENAME = "currencies.db";
+
     private CurrenciesDatabase currenciesDatabase;
 
     public PersistenceModule(Application application){
-        this.currenciesDatabase = Room.databaseBuilder(application.getApplicationContext(), CurrenciesDatabase.class, "currencies.db").addCallback(new RoomDatabase.Callback() {
+        this.currenciesDatabase = Room.databaseBuilder(application.getApplicationContext(), CurrenciesDatabase.class, DATABASE_FILENAME).addCallback(new RoomDatabase.Callback() {
             @Override
             public void onCreate(@NonNull SupportSQLiteDatabase db) {
                 super.onCreate(db);

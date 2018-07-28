@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -36,8 +37,32 @@ public class TextFileAssetReaderObservableTransformer<R> implements ObservableTr
                 //.onExceptionResumeNext(e -> {});
         else
             return this.readFromFile()
-                .doOnError(error -> Utils.log(error));
-                //.onExceptionResumeNext(e -> Utils.log("Error Found!"));
+                    .doOnError(error -> Utils.log(error));
+                    /*.doOnError(error -> {
+                        throwable[0] = error;
+                        Utils.log(throwable[0]);
+                        Utils.log("OH NO!!!");
+                    })*/
+                    /*.doOnTerminate(() -> Utils.log("ON TERMINATE!!!"))
+                    .doOnComplete(() -> Utils.log("ON COMPLETE!!!"))
+                    .doOnDispose(() -> Utils.log("ON DISPOSE!!!"));*/
+                    /*.onErrorResumeNext(t -> {
+                        Utils.log("ON ERROR RESUME NEXT");
+                        return Observable.<String>error(new RuntimeException("Something happened!!!"));
+                    });*/
+                    /*.doOnError(error -> {
+                        throwable[0] = error;
+                        Utils.log(throwable[0]);
+                        Utils.log("OH NO!!!");
+                    })
+                    .onExceptionResumeNext(e -> {
+                        Observable.<String>error(throwable[0]);
+                    });*/
+                /*.doOnError(error -> {
+                    Utils.log(error);
+                    Utils.log("DO ON ERROR!!!!!!!!!");
+                });*/
+                //.onExceptionResumeNext(e -> Observable.<String>error(new RuntimeException("OH NO!")));
     }
 
     public Observable<String> readFromFile(){
@@ -50,6 +75,7 @@ public class TextFileAssetReaderObservableTransformer<R> implements ObservableTr
                 while ((line = reader.readLine()) != null) {
                     emitter.onNext(line);
                 }
+                emitter.onComplete();
             } catch (UnsupportedEncodingException e) {
                 emitter.onError(e);
             } catch (FileNotFoundException e){
@@ -64,7 +90,6 @@ public class TextFileAssetReaderObservableTransformer<R> implements ObservableTr
                         e.printStackTrace();
                     }
                 }
-                emitter.onComplete();
             }
 
         }).subscribeOn(Schedulers.io());

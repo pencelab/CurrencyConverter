@@ -29,7 +29,7 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     }
 
     @Override
-    public Flowable<List<CurrencyConversion>> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
+    public Flowable<CurrencyConversion> getFlowableLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
         return this.currencyConversionDao.getFlowableLatestCurrencyConversionByBaseAndTarget(baseCode, targetCode);
     }
 
@@ -54,7 +54,7 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     }
 
     @Override
-    public Maybe<List<CurrencyConversion>> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
+    public Maybe<CurrencyConversion> getMaybeLatestCurrencyConversionByBaseAndTarget(@NonNull String baseCode, @NonNull String targetCode) {
         return this.currencyConversionDao.getMaybeLatestCurrencyConversionByBaseAndTarget(baseCode, targetCode);
     }
 
@@ -71,6 +71,11 @@ public class CurrencyConversionDataSource implements CurrencyConversionRepositor
     @Override
     public void insertOrUpdateCurrencyConversion(@NonNull CurrencyConversion currencyConversion) {
         this.currencyConversionDao.insertOrUpdateCurrencyConversion(currencyConversion);
+    }
+
+    @Override
+    public void insertOrUpdateCurrencyConversions(CurrencyConversion... currencyConversions) {
+        this.currencyConversionDao.insertOrUpdateCurrencyConversions(currencyConversions);
     }
 
     @Override

@@ -68,9 +68,23 @@ public interface CurrencyDao {
     void insertOrUpdateCurrency(@NonNull Currency currency);
 
     /**
+     * Inserts Currencies into the database. If any Currency already exists, replaces it.
+     * @param currencies the Currency to be inserted.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertOrUpdateCurrencies(Currency... currencies);
+
+    /**
      * Delete all Currencies.
      */
     @Query("DELETE FROM Currency")
     void deleteAllCurrencies();
+
+    /**
+     * Delete the Currency that matches the @code.
+     * @param code: the currency code.
+     */
+    @Query("DELETE FROM Currency WHERE code = :code")
+    void deleteCurrency(@NonNull String code);
 
 }

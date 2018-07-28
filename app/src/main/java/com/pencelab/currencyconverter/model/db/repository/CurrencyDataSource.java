@@ -54,7 +54,17 @@ public class CurrencyDataSource implements CurrencyRepository {
     }
 
     @Override
+    public void insertOrUpdateCurrencies(Currency... currencies) {
+        this.currencyDao.insertOrUpdateCurrencies(currencies);
+    }
+
+    @Override
     public void deleteAllCurrencies() {
         this.currencyDao.deleteAllCurrencies();
+    }
+
+    @Override
+    public void deleteCurrencyByCode(@NonNull String code) {
+        this.currencyDao.deleteCurrency(code);
     }
 }

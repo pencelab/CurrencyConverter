@@ -15,6 +15,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.Objects;
+
 @Entity(tableName = "Currency")
 public class Currency {
 
@@ -57,4 +59,21 @@ public class Currency {
         return "Code: " + this.code + " | Name: " + this.name + " | Symbol: " + this.symbol;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Currency that = (Currency) obj;
+
+        if (!this.code.equals(that.code)) return false;
+        else if(!this.name.equals(that.name)) return false;
+        return this.symbol.equals(that.symbol);
+    }
+
+    //JDK 7 way
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.code, this.name, this.symbol);
+    }
 }

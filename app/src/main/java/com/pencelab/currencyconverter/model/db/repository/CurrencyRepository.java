@@ -19,5 +19,7 @@ public interface CurrencyRepository {
     Maybe<List<Currency>> getMaybeCurrencyByName(@NonNull String name);
 
     void insertOrUpdateCurrency(@NonNull Currency currency);
+    void insertOrUpdateCurrencies(Currency... currencies);
     void deleteAllCurrencies();
+    void deleteCurrencyByCode(@NonNull String code);
 }

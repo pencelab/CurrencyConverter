@@ -8,6 +8,8 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.pencelab.currencyconverter.common.Utils;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
@@ -93,7 +95,7 @@ public class CurrencyConversion {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(@NonNull Integer id) {
         this.id = id;
     }
 
@@ -139,7 +141,7 @@ public class CurrencyConversion {
 
         if (!this.baseCode.equals(that.baseCode)) return false;
         else if(!this.targetCode.equals(that.targetCode)) return false;
-        return this.value == that.value;
+        return this.value.equals(that.value);
     }
 
     //Classic way
