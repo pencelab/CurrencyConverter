@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.pencelab.currencyconverter.common.file.FileUtils;
+import com.pencelab.currencyconverter.model.db.data.Currency;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

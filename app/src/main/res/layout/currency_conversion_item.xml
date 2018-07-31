@@ -33,7 +33,7 @@
                     android:text="ABC"/>
 
                 <TextView
-                    android:id="@+id/currency_conversion_item_info_location_left"
+                    android:id="@+id/currency_conversion_item_info_name_left"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_card_view_small_info"
@@ -82,7 +82,7 @@
                     android:text="ABC"/>
 
                 <TextView
-                    android:id="@+id/currency_conversion_item_info_location_right"
+                    android:id="@+id/currency_conversion_item_info_name_right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_card_view_small_info"
@@ -102,14 +102,33 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/currency_conversion_item_date"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/currency_conversion_content_block"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_view_small_info_margin"
-            android:text="2012-12-01"
-            android:textSize="@dimen/text_size_card_view_small_info"/>
+            android:layout_below="@id/currency_conversion_content_block">
+
+            <TextView
+                android:id="@+id/currency_conversion_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:textColor="@android:color/darker_gray"
+                android:text="2012-12-01"
+                android:textSize="@dimen/text_size_card_view_small_info"/>
+
+            <TextView
+                android:id="@+id/currency_conversion_item_source"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/darker_gray"
+                android:text="thisurl.com"
+                android:textSize="@dimen/text_size_card_view_small_info"/>
+
+        </RelativeLayout>
+
+
 
     </RelativeLayout>
 

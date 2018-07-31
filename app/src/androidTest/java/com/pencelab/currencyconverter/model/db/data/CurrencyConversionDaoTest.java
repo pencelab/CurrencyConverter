@@ -7,7 +7,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.pencelab.currencyconverter.common.BigDecimalFactory;
-import com.pencelab.currencyconverter.common.Utils;
 import com.pencelab.currencyconverter.model.db.repository.CurrenciesDatabase;
 
 import org.junit.After;
@@ -37,14 +36,14 @@ public class CurrencyConversionDaoTest {
     @Rule public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     @Before
-    public void createDB() {
+    public void setUp() {
         this.currenciesDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), CurrenciesDatabase.class)
                 .allowMainThreadQueries()
                 .build();
     }
 
     @After
-    public void closeDB() {
+    public void tearDown() {
         this.currenciesDatabase.close();
     }
 

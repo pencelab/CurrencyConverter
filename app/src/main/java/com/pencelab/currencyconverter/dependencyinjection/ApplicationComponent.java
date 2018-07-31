@@ -4,9 +4,11 @@ import com.pencelab.currencyconverter.http.ServicesModule;
 import com.pencelab.currencyconverter.model.db.PersistenceModule;
 import com.pencelab.currencyconverter.model.db.PersistencyModule;
 import com.pencelab.currencyconverter.model.db.data.CurrencyConversionDao;
+import com.pencelab.currencyconverter.model.db.data.CurrencyConversionPlusDao;
 import com.pencelab.currencyconverter.model.db.data.CurrencyDao;
 import com.pencelab.currencyconverter.model.db.data.WeatherDao;
 import com.pencelab.currencyconverter.model.db.repository.CurrenciesDatabase;
+import com.pencelab.currencyconverter.model.db.repository.CurrencyConversionPlusRepository;
 import com.pencelab.currencyconverter.model.db.repository.CurrencyConversionRepository;
 import com.pencelab.currencyconverter.model.db.repository.CurrencyRepository;
 import com.pencelab.currencyconverter.model.db.repository.WeatherDatabase;
@@ -28,6 +30,8 @@ public interface ApplicationComponent {
     CurrencyRepository currencyRepository();
     CurrencyConversionDao currencyConversionDao();
     CurrencyConversionRepository currencyConversionRepository();
+    CurrencyConversionPlusDao currencyConversionPlusDao();
+    CurrencyConversionPlusRepository currencyConversionPlusRepository();
 
     WeatherDatabase weatherDatabase();
     WeatherDao weatherDao();

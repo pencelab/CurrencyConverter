@@ -10,7 +10,11 @@ import com.pencelab.currencyconverter.dependencyinjection.App;
 import com.pencelab.currencyconverter.http.CurrencyLayerService;
 import com.pencelab.currencyconverter.common.file.TextFileAssetReaderObservableSource;
 import com.pencelab.currencyconverter.common.file.TextFileAssetReaderObservableTransformer;
+import com.pencelab.currencyconverter.model.db.data.Currency;
+import com.pencelab.currencyconverter.model.db.repository.CurrenciesDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -28,8 +32,13 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
 
     private CompositeDisposable disposables;
 
+    @Inject
+    CurrenciesDatabase currenciesDatabase;
+
     private Button empty;
     private Button notEmpty;
+
+    private Button howMany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +50,12 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
         this.empty = findViewById(R.id.empty);
         this.notEmpty = findViewById(R.id.not_empty);
 
+        this.howMany = findViewById(R.id.howmany);
+
         this.empty.setOnClickListener(v -> this.testCode(true, "currencies.txt"));
         this.notEmpty.setOnClickListener(v -> this.testCode(false, "currencies2.txt"));
+
+        this.howMany.setOnClickListener(v -> this.howMany());
     }
 
     @Override
@@ -65,6 +78,18 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
                     .subscribe(currencyLayerData -> {
                         Utils.log(currencyLayerData.toString());
                     })
+        );
+    }
+
+    private void howMany(){
+        this.disposables.add(
+                this.currenciesDatabase.currencyDao().getMaybeCurrencies()
+                        .doOnComplete(() -> Utils.log("Dummy request completed!!!"))
+                        //.doOnSuccess(list -> Utils.log("Dummy request succeeded!!!"))
+                        .doOnError(error -> Utils.log(error))
+                        .subscribeOn(Schedulers.io())
+                        .subscribe(list -> Utils.log("LIST SIZE --> " + list.size()),
+                                Utils::log)
         );
     }
 

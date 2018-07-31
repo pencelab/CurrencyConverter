@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Convertidor de Monedas</string>
+
+    <string name="format_date">dd-MM-yyyy hh:mm</string>
+
+</resources>

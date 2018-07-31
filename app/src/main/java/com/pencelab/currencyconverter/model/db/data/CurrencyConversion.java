@@ -23,6 +23,7 @@ TEXT base_code -> Foreign Key from Currency
 TEXT target_code -> Foreign Key from Currency
 REAL value
 INTEGER timestamp
+TEXT source
 
 */
 
@@ -51,27 +52,35 @@ public class CurrencyConversion {
     @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    private Integer id;
+    protected Integer id;
 
     @NonNull
     @ColumnInfo(name = "base_code")
-    private final String baseCode;
+    protected final String baseCode;
 
     @NonNull
     @ColumnInfo(name = "target_code")
-    private final String targetCode;
+    protected final String targetCode;
 
     @NonNull
     @ColumnInfo(name = "value")
-    private final BigDecimal value;
+    protected final BigDecimal value;
 
     @NonNull
     @ColumnInfo(name = "date")
-    private final Date date;
+    protected final Date date;
 
     @NonNull
     @ColumnInfo(name = "source")
-    private final String source;
+    protected final String source;
+
+    /*@Ignore
+    @ColumnInfo(name = "base_name")
+    private String baseCurrencyName;
+
+    @Ignore
+    @ColumnInfo(name = "target_name")
+    private String targetCurrencyName;*/
 
     public CurrencyConversion(@NonNull String baseCode, @NonNull String targetCode, @NonNull BigDecimal value, @NonNull Date date, @NonNull String source) {
         this.baseCode = baseCode;
@@ -90,6 +99,18 @@ public class CurrencyConversion {
         this.date = date;
         this.source = source;
     }
+
+    /*@Ignore
+    public CurrencyConversion(@NonNull Integer id, @NonNull String baseCode, @NonNull String targetCode, @NonNull BigDecimal value, @NonNull Date date, @NonNull String source, @NonNull String baseCurrencyName, @NonNull String targetCurrencyName) {
+        this.id = id;
+        this.baseCode = baseCode;
+        this.targetCode = targetCode;
+        this.value = value;
+        this.date = date;
+        this.source = source;
+        this.baseCurrencyName = baseCurrencyName;
+        this.targetCurrencyName = targetCurrencyName;
+    }*/
 
     public Integer getId() {
         return this.id;
@@ -124,12 +145,34 @@ public class CurrencyConversion {
         return this.source;
     }
 
+    /*public String getBaseCurrencyName() {
+        return this.baseCurrencyName;
+    }
+
+    public String getTargetCurrencyName() {
+        return this.targetCurrencyName;
+    }*/
+
     @Override
     public String toString() {
+        //String result = "";
+
         if(this.id == null)
             return "Base Code: " + this.baseCode + " | Target Code: " + this.targetCode + " | Value: " + this.value + " | Date: " + this.date + " | Source: " + this.source;
         else
             return "ID: " + this.id + " | Base Code: " + this.baseCode + " | Target Code: " + this.targetCode + " | Value: " + this.value + " | Date: " + this.date + " | Source: " + this.source;
+
+        /*if(this.baseCurrencyName != null && this.baseCurrencyName.length() > 0)
+            result += " | Base Currency Name: " + this.baseCurrencyName;
+        else
+            result += " | Base Currency Name: NULL";
+
+        if(this.targetCurrencyName != null && this.targetCurrencyName.length() > 0)
+            result += " | Target Currency Name: " + this.targetCurrencyName;
+        else
+            result += " | Target Currency Name: NULL";*/
+
+        //return result;
     }
 
     @Override

@@ -1,9 +1,14 @@
 package com.pencelab.currencyconverter.model.db.data;
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.pencelab.currencyconverter.common.Utils;
+import com.pencelab.currencyconverter.common.file.FileUtils;
+import com.pencelab.currencyconverter.common.file.TextFileAssetReaderObservableSource;
+import com.pencelab.currencyconverter.common.file.TextFileAssetReaderObservableTransformer;
 import com.pencelab.currencyconverter.model.db.repository.CurrenciesDatabase;
 
 import org.junit.After;
@@ -17,6 +22,9 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.reactivex.Observable;
+import io.reactivex.disposables.CompositeDisposable;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -25,6 +33,12 @@ public class CurrencyDaoTest {
 
     private CurrenciesDatabase currenciesDatabase;
 
+    private CompositeDisposable disposables;
+
+    private String currenciesTextFilename = "currencies.txt";
+
+    private Context context;
+
     @Mock
     Currency currency;
 
@@ -32,15 +46,48 @@ public class CurrencyDaoTest {
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
     @Before
-    public void createDB(){
-        this.currenciesDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), CurrenciesDatabase.class)
+    public void setUp(){
+        this.context = InstrumentationRegistry.getContext();
+        this.disposables = new CompositeDisposable();
+        this.currenciesDatabase = Room.inMemoryDatabaseBuilder(this.context, CurrenciesDatabase.class)
                 .allowMainThreadQueries()
                 .build();
     }
 
     @After
-    public void closeDB() {
+    public void tearDown() {
         this.currenciesDatabase.close();
+        this.disposables.dispose();
+    }
+
+    @Test
+    public void shouldContainDataLoadedFromFileWithObservableSource() {
+        this.disposables.add(
+                Observable.defer(() -> TextFileAssetReaderObservableSource.readFromAssetTextFile(this.currenciesTextFilename, this.context))
+                        .subscribe(
+                                line -> currenciesDatabase.currencyDao().insertOrUpdateCurrency(FileUtils.createCurrencyFromTextLine(line)),
+                                Utils::log
+                        )
+        );
+
+        this.disposables.add(
+                this.currenciesDatabase.currencyDao().getMaybeCurrencies()
+                        .test()
+                        .assertValue(list -> list.size() == 192)
+        );
+    }
+
+    @Test
+    public void shouldContainDataLoadedFromFileWithObservableTransformer() {
+        Observable.empty()
+                .compose(TextFileAssetReaderObservableTransformer.readFromAssetTextFile(this.currenciesTextFilename, this.context))
+                .blockingSubscribe(line -> currenciesDatabase.currencyDao().insertOrUpdateCurrency(FileUtils.createCurrencyFromTextLine(line.toString())));
+
+        this.disposables.add(
+                this.currenciesDatabase.currencyDao().getMaybeCurrencies()
+                        .test()
+                        .assertValue(list -> list.size() == 192)
+        );
     }
 
     @Test

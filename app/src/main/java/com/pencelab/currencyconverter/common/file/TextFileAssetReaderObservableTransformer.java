@@ -38,31 +38,7 @@ public class TextFileAssetReaderObservableTransformer<R> implements ObservableTr
         else
             return this.readFromFile()
                     .doOnError(error -> Utils.log(error));
-                    /*.doOnError(error -> {
-                        throwable[0] = error;
-                        Utils.log(throwable[0]);
-                        Utils.log("OH NO!!!");
-                    })*/
-                    /*.doOnTerminate(() -> Utils.log("ON TERMINATE!!!"))
-                    .doOnComplete(() -> Utils.log("ON COMPLETE!!!"))
-                    .doOnDispose(() -> Utils.log("ON DISPOSE!!!"));*/
-                    /*.onErrorResumeNext(t -> {
-                        Utils.log("ON ERROR RESUME NEXT");
-                        return Observable.<String>error(new RuntimeException("Something happened!!!"));
-                    });*/
-                    /*.doOnError(error -> {
-                        throwable[0] = error;
-                        Utils.log(throwable[0]);
-                        Utils.log("OH NO!!!");
-                    })
-                    .onExceptionResumeNext(e -> {
-                        Observable.<String>error(throwable[0]);
-                    });*/
-                /*.doOnError(error -> {
-                    Utils.log(error);
-                    Utils.log("DO ON ERROR!!!!!!!!!");
-                });*/
-                //.onExceptionResumeNext(e -> Observable.<String>error(new RuntimeException("OH NO!")));
+                    //.onExceptionResumeNext(e -> {});
     }
 
     public Observable<String> readFromFile(){
