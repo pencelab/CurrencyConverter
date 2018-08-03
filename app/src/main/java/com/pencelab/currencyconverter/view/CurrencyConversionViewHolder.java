@@ -60,12 +60,12 @@ public class CurrencyConversionViewHolder extends RecyclerView.ViewHolder{
         this.symbolRight.setText(symbolRight);
     }
 
-    public void setLocationLeft(String locationLeft) {
-        this.nameLeft.setText(locationLeft);
+    public void setNameLeft(String nameLeft) {
+        this.nameLeft.setText(nameLeft);
     }
 
-    public void setLocationRight(String locationRight) {
-        this.nameRight.setText(locationRight);
+    public void setNameRight(String nameRight) {
+        this.nameRight.setText(nameRight);
     }
 
     public void setAmountLeft(BigDecimal amountLeft) {

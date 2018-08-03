@@ -74,14 +74,6 @@ public class CurrencyConversion {
     @ColumnInfo(name = "source")
     protected final String source;
 
-    /*@Ignore
-    @ColumnInfo(name = "base_name")
-    private String baseCurrencyName;
-
-    @Ignore
-    @ColumnInfo(name = "target_name")
-    private String targetCurrencyName;*/
-
     public CurrencyConversion(@NonNull String baseCode, @NonNull String targetCode, @NonNull BigDecimal value, @NonNull Date date, @NonNull String source) {
         this.baseCode = baseCode;
         this.targetCode = targetCode;
@@ -99,18 +91,6 @@ public class CurrencyConversion {
         this.date = date;
         this.source = source;
     }
-
-    /*@Ignore
-    public CurrencyConversion(@NonNull Integer id, @NonNull String baseCode, @NonNull String targetCode, @NonNull BigDecimal value, @NonNull Date date, @NonNull String source, @NonNull String baseCurrencyName, @NonNull String targetCurrencyName) {
-        this.id = id;
-        this.baseCode = baseCode;
-        this.targetCode = targetCode;
-        this.value = value;
-        this.date = date;
-        this.source = source;
-        this.baseCurrencyName = baseCurrencyName;
-        this.targetCurrencyName = targetCurrencyName;
-    }*/
 
     public Integer getId() {
         return this.id;
@@ -145,42 +125,24 @@ public class CurrencyConversion {
         return this.source;
     }
 
-    /*public String getBaseCurrencyName() {
-        return this.baseCurrencyName;
-    }
-
-    public String getTargetCurrencyName() {
-        return this.targetCurrencyName;
-    }*/
-
     @Override
     public String toString() {
-        //String result = "";
-
         if(this.id == null)
             return "Base Code: " + this.baseCode + " | Target Code: " + this.targetCode + " | Value: " + this.value + " | Date: " + this.date + " | Source: " + this.source;
         else
             return "ID: " + this.id + " | Base Code: " + this.baseCode + " | Target Code: " + this.targetCode + " | Value: " + this.value + " | Date: " + this.date + " | Source: " + this.source;
-
-        /*if(this.baseCurrencyName != null && this.baseCurrencyName.length() > 0)
-            result += " | Base Currency Name: " + this.baseCurrencyName;
-        else
-            result += " | Base Currency Name: NULL";
-
-        if(this.targetCurrencyName != null && this.targetCurrencyName.length() > 0)
-            result += " | Target Currency Name: " + this.targetCurrencyName;
-        else
-            result += " | Target Currency Name: NULL";*/
-
-        //return result;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null) return false;
+        //Check if 'this' and 'o' are not from the same class. If they're not, then check that 'this' is parent of 'o'. If not then returns false
+        if(getClass() != o.getClass() && !getClass().isAssignableFrom(o.getClass())) return false;
 
         CurrencyConversion that = (CurrencyConversion) o;
+
+        Utils.log("\nComparing this: " + this + "\nAgainst that: " + that);
 
         if (!this.baseCode.equals(that.baseCode)) return false;
         else if(!this.targetCode.equals(that.targetCode)) return false;

@@ -8,6 +8,7 @@ import com.pencelab.currencyconverter.model.db.data.CurrencyConversionPlusDao;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 
 public class CurrencyConversionPlusDataSource implements CurrencyConversionPlusRepository {
 
@@ -18,7 +19,12 @@ public class CurrencyConversionPlusDataSource implements CurrencyConversionPlusR
     }
 
     @Override
-    public Flowable<List<CurrencyConversionPlus>> getFlowableCurrencyConversions() {
-        return this.currencyConversionPlusDao.getFlowableCurrencyConversions();
+    public Flowable<List<CurrencyConversionPlus>> getFlowableLatestCurrencyConversions() {
+        return this.currencyConversionPlusDao.getFlowableLatestDistinctCurrencyConversions();
+    }
+
+    @Override
+    public Maybe<List<CurrencyConversionPlus>> getMaybeLatestCurrencyConversions() {
+        return this.currencyConversionPlusDao.getMaybeLatestDistinctCurrencyConversions();
     }
 }

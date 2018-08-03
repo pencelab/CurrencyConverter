@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pencelab.currencyconverter.R;
-import com.pencelab.currencyconverter.model.db.data.CurrencyConversion;
+import com.pencelab.currencyconverter.model.db.data.CurrencyConversionPlus;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,12 +16,12 @@ import java.util.List;
 public class CurrencyConversionDataAdapter extends RecyclerView.Adapter<CurrencyConversionViewHolder> {
 
     public interface ClickListener{
-        void onItemClicked(CurrencyConversion cc);
+        void onItemClicked(CurrencyConversionPlus ccp);
     }
 
     private ClickListener clickListener;
 
-    private final List<CurrencyConversion> data = new ArrayList<>();
+    private final List<CurrencyConversionPlus> data = new ArrayList<>();
 
     public CurrencyConversionDataAdapter(){
         super();
@@ -46,17 +46,15 @@ public class CurrencyConversionDataAdapter extends RecyclerView.Adapter<Currency
 
     @Override
     public void onBindViewHolder(@NonNull CurrencyConversionViewHolder holder, int position) {
-        CurrencyConversion currencyConversion = data.get(position);
-        holder.setSymbolLeft(currencyConversion.getBaseCode());
-        holder.setSymbolRight(currencyConversion.getTargetCode());
-
-        holder.setLocationLeft(currencyConversion.getBaseCode());
-        holder.setLocationRight(currencyConversion.getBaseCode());
-
+        CurrencyConversionPlus currencyConversionPlus = data.get(position);
+        holder.setSymbolLeft(currencyConversionPlus.getBaseCode());
+        holder.setNameLeft(currencyConversionPlus.getBaseCurrencyName());
         holder.setAmountLeft(new BigDecimal(1));
-        holder.setAmountRight(currencyConversion.getValue());
-        holder.setDate(currencyConversion.getDate());
-        holder.setSource(currencyConversion.getSource());
+        holder.setSymbolRight(currencyConversionPlus.getTargetCode());
+        holder.setNameRight(currencyConversionPlus.getTargetCurrencyName());
+        holder.setAmountRight(currencyConversionPlus.getValue());
+        holder.setDate(currencyConversionPlus.getDate());
+        holder.setSource(currencyConversionPlus.getSource());
     }
 
     @Override
@@ -64,24 +62,24 @@ public class CurrencyConversionDataAdapter extends RecyclerView.Adapter<Currency
         return this.data.size();
     }
 
-    public boolean contains(CurrencyConversion currencyConversion){
-        return this.data.contains(currencyConversion);
+    public boolean contains(CurrencyConversionPlus currencyConversionPlus){
+        return this.data.contains(currencyConversionPlus);
     }
 
-    public int getPosition(CurrencyConversion currencyConversion){
-        return this.data.indexOf(currencyConversion);
+    public int getPosition(CurrencyConversionPlus currencyConversionPlus){
+        return this.data.indexOf(currencyConversionPlus);
     }
 
-    public boolean add(CurrencyConversion currencyConversion){
-        int index = this.getPosition(currencyConversion);
+    public boolean add(CurrencyConversionPlus currencyConversionPlus){
+        int index = this.getPosition(currencyConversionPlus);
 
         if(index < 0){
-            this.data.add(0, currencyConversion);
+            this.data.add(0, currencyConversionPlus);
             this.notifyItemInserted(0);
             return true;
         }
 
-        this.data.set(index, currencyConversion);
+        this.data.set(index, currencyConversionPlus);
         this.notifyItemChanged(index);
 
         return false;

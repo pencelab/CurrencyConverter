@@ -21,6 +21,8 @@ import com.pencelab.currencyconverter.model.db.repository.CurrencyConversionRepo
 import com.pencelab.currencyconverter.model.db.repository.CurrencyDataSource;
 import com.pencelab.currencyconverter.model.db.repository.CurrencyRepository;
 
+import java.util.concurrent.Executor;
+
 import javax.inject.Singleton;
 
 import dagger.Module;

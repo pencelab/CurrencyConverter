@@ -14,6 +14,8 @@ import com.pencelab.currencyconverter.model.db.repository.CurrencyRepository;
 import com.pencelab.currencyconverter.model.db.repository.WeatherDatabase;
 import com.pencelab.currencyconverter.model.db.repository.WeatherRepository;
 import com.pencelab.currencyconverter.view.CurrencyMonitorActivity;
+import com.pencelab.currencyconverter.viewmodel.CurrencyConversionViewModelFactory;
+import com.pencelab.currencyconverter.viewmodel.CurrencyViewModelFactory;
 
 import javax.inject.Singleton;
 

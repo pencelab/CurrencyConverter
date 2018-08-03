@@ -39,6 +39,17 @@ public class CurrencyConversionPlus extends CurrencyConversion {
     public String toString() {
         return super.toString() + " | Base Currency Name: " + this.baseCurrencyName + " | Target Currency Name: " + this.targetCurrencyName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if(o == null) return false;
+        if(this.getClass() != o.getClass()) {
+            CurrencyConversion me = new CurrencyConversion(this.baseCode, this.targetCode, this.value, this.date, this.source);
+            return me.equals(o);
+        }else
+            return super.equals(o);
+    }
 }
 
 
