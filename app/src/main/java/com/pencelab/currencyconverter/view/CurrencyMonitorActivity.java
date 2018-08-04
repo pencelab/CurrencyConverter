@@ -3,6 +3,8 @@ package com.pencelab.currencyconverter.view;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.pencelab.currencyconverter.R;
 import com.pencelab.currencyconverter.common.Utils;
@@ -16,10 +18,17 @@ import com.pencelab.currencyconverter.viewmodel.CurrencyViewModelFactory;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class CurrencyMonitorActivity extends AppCompatActivity {
+
+    @BindView(R.id.currency_conversion_recycler_view)
+    RecyclerView recyclerView;
+
+    private LinearLayoutManager layoutManager;
+    private CurrencyConversionDataAdapter currencyConversionDataAdapter;
 
     private String accessKey = "8602e06a75aa63372e10373e989426b5";
 
@@ -41,6 +50,17 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
 
         ((App) getApplication()).getComponent().inject(this);
 
+        this.init();
+    }
+
+    private void init(){
+        this.recyclerView.setHasFixedSize(true);
+        this.layoutManager = new LinearLayoutManager(this);
+        this.recyclerView.setLayoutManager(this.layoutManager);
+
+        this.currencyConversionDataAdapter = new CurrencyConversionDataAdapter();
+        this.recyclerView.setAdapter(this.currencyConversionDataAdapter);
+
         this.currencyConversionViewModel = ViewModelProviders.of(this, currencyConversionViewModelFactory).get(CurrencyConversionViewModel.class);
         this.currencyViewModel = ViewModelProviders.of(this, currencyViewModelFactory).get(CurrencyViewModel.class);
     }
@@ -51,31 +71,8 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
 
         this.disposables = new CompositeDisposable();
 
-        this.disposables.add(
-            this.currencyConversionViewModel.getLatestConversions()
-                    .subscribeOn(Schedulers.io())
-                    .subscribe(list -> {
-                        if(list.isEmpty())
-                            Utils.log("LIST IS EMPTY");
-
-                        for(CurrencyConversionPlus ccp : list)
-                            Utils.log("ITEM: " + ccp);
-                    })
-        );
-
-        this.disposables.add(
-                this.currencyViewModel.getCurrencies()
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(list -> {
-                            if(list.isEmpty())
-                                Utils.log("LIST IS EMPTY");
-
-                            for(Currency c : list)
-                                Utils.log("Currency: " + c);
-                        })
-        );
-
         //this.observeCurrencyLayerData();
+        this.observeCurrencyConversionsFromDataBase();
     }
 
     /*public void observeCurrencyLayerData(){
@@ -91,6 +88,19 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
                     })
         );
     }*/
+
+    private void observeCurrencyConversionsFromDataBase(){
+        this.disposables.add(
+                this.currencyConversionViewModel.getLatestConversions()
+                    .subscribeOn(Schedulers.single())
+                    .subscribe(list -> {
+                        for (CurrencyConversionPlus ccp : list){
+                            if (this.currencyConversionDataAdapter.add(ccp))
+                                this.recyclerView.smoothScrollToPosition(0);
+                        }
+                    })
+        );
+    }
 
     @Override
     protected void onStop() {

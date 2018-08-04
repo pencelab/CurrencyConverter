@@ -142,11 +142,12 @@ public class CurrencyConversion {
 
         CurrencyConversion that = (CurrencyConversion) o;
 
-        Utils.log("\nComparing this: " + this + "\nAgainst that: " + that);
+        /*if (!this.baseCode.equals(that.baseCode)) return false;
+        else if(!this.targetCode.equals(that.targetCode)) return false;
+        return this.value.equals(that.value);*/
 
         if (!this.baseCode.equals(that.baseCode)) return false;
-        else if(!this.targetCode.equals(that.targetCode)) return false;
-        return this.value.equals(that.value);
+        return this.targetCode.equals(that.targetCode);
     }
 
     //Classic way
