@@ -2,10 +2,12 @@ package com.pencelab.currencyconverter.services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.pencelab.currencyconverter.common.BigDecimalFactory;
+import com.pencelab.currencyconverter.common.Utils;
 import com.pencelab.currencyconverter.http.CurrencyLayerService;
 import com.pencelab.currencyconverter.http.currencylayer.CurrencyLayerCurrencyValue;
 import com.pencelab.currencyconverter.http.currencylayer.CurrencyLayerCurrencyValueFactory;
@@ -36,13 +38,27 @@ public class CurrencyLayerRequesterService extends Service {
     @Inject
     CurrencyConversionRepository currencyConversionRepository;
 
+    private boolean isStarted = false;
+
+    private final IBinder binder = new CurrencyLayerRequesterBinder();
+
+    public class CurrencyLayerRequesterBinder extends Binder {
+        public CurrencyLayerRequesterService getService() {
+            return CurrencyLayerRequesterService.this;
+        }
+    }
+
     public CurrencyLayerRequesterService() {
+    }
+
+    public boolean isStarted(){
+        return this.isStarted;
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return this.binder;
     }
 
     @Override
@@ -54,13 +70,8 @@ public class CurrencyLayerRequesterService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //Intent broadcastReceiverIntent = new Intent("com.pencelab.currencyconverter.services.CurrencyLayerRequesterBroadcastReceiver");
-        Intent broadcastReceiverIntent = new Intent(this, CurrencyLayerRequesterBroadcastReceiver.class);
-        this.sendBroadcast(broadcastReceiverIntent);
-
         if(this.disposable != null){
             this.disposable.dispose();
-            //this.disposable.clear();
             this.disposable = null;
         }
     }
@@ -68,17 +79,27 @@ public class CurrencyLayerRequesterService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+        this.isStarted = true;
         this.observeCurrencyLayerService();
+
         return START_STICKY;
     }
 
     private void observeCurrencyLayerService(){
+
         this.disposable.add(
+                Observable.interval(0, 5, TimeUnit.SECONDS)
+                        .subscribeOn(Schedulers.newThread())
+                        .map(i -> "Service -> Second: " + i * 5)//TODO delete this
+                        .subscribe(str -> Utils.log(str))
+        );
+
+        /*this.disposable.add(
                 Observable.interval(0, 1, TimeUnit.DAYS)
                         .subscribeOn(Schedulers.newThread())
                         .flatMapSingle(i -> this.currencyLayerService.getCurrencyLayerDataSingle(ACCESS_KEY))
                         .subscribe(cld -> this.processCurrencyLayerData(cld))
-        );
+        );*/
     }
 
     private void processCurrencyLayerData(CurrencyLayerData currencyLayerData){
@@ -91,10 +112,8 @@ public class CurrencyLayerRequesterService extends Service {
         CurrencyConversion[] currencyConversions = new CurrencyConversion[list.size()];
 
         int i = 0;
-        for(CurrencyLayerCurrencyValue clcv : list) {
-            //this.currencyConversionRepository.insertOrUpdateCurrencyConversion(new CurrencyConversion(baseCode, clcv.getCurrency(), BigDecimalFactory.getBigDecimal(clcv.getValue()), date, SOURCE));
+        for(CurrencyLayerCurrencyValue clcv : list)
             currencyConversions[i++] = new CurrencyConversion(baseCode, clcv.getCurrency(), BigDecimalFactory.getBigDecimal(clcv.getValue()), date, SOURCE);
-        }
 
         this.currencyConversionRepository.insertOrUpdateCurrencyConversions(currencyConversions);
 

@@ -7,7 +7,7 @@ public class BigDecimalFactory {
     private static final int PRECISION = 4;
 
     public static BigDecimal getBigDecimal(double value){
-        return getBigDecimal(new BigDecimal(value).scaleByPowerOfTen(4).longValue());
+        return getBigDecimal(new BigDecimal(value).scaleByPowerOfTen(PRECISION).longValue());
     }
 
     public static BigDecimal getBigDecimal(long value){

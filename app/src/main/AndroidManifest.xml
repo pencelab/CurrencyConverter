@@ -19,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.SettingsActivity" />
+
+        <service
+            android:name=".services.CurrencyLayerRequesterService"
+            android:enabled="true"
+            android:stopWithTask="false">
+        </service>
+
     </application>
 
 </manifest>

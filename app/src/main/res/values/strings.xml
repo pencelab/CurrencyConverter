@@ -5,4 +5,8 @@
 
     <string name="format_date">MM-dd-yyyy hh:mm</string>
 
+    <string name="label_settings">Settings</string>
+    <string name="label_pref_service_title">Service</string>
+    <string name="label_pref_service_summary">Keep service running.</string>
+
 </resources>
