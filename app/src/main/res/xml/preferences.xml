@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference
-        android:key="pref_service_run"
-        android:summary="@string/label_pref_service_summary"
-        android:title="@string/label_pref_service_title"
-        android:checked="true"/>
+    <PreferenceCategory android:title="@string/label_pref_category_services">
+
+        <CheckBoxPreference
+            android:key="pref_service_run"
+            android:summary="@string/label_pref_service_http_requester_summary"
+            android:title="@string/label_pref_service_http_requester_title"
+            android:defaultValue="true"/>
+
+        <ListPreference
+            android:key="pref_service_frequency"
+            android:title="@string/label_pref_service_http_requester_frequency_title"
+            android:summary="@string/label_pref_service_http_requester_frequency_summary"
+            android:dialogTitle="@string/label_pref_service_http_requester_frequency_title"
+            android:entries="@array/entries_update_frequency_preference"
+            android:entryValues="@array/entry_values_update_frequency_preference"
+            android:defaultValue="@string/entry_value_update_frequency_preference_1_day"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -14,6 +14,8 @@ public class SettingsActivity extends RxAppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_settings);
 
+        this.setTitle(getString(R.string.label_settings));
+
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment())
                 .commit();

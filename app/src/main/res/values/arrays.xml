@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_update_frequency_preference">
+        <item>@string/entry_update_frequency_preference_1_hour</item>
+        <item>@string/entry_update_frequency_preference_6_hour</item>
+        <item>@string/entry_update_frequency_preference_12_hour</item>
+        <item>@string/entry_update_frequency_preference_1_day</item>
+    </string-array>
+
+    <string-array name="entry_values_update_frequency_preference">
+        <item>@string/entry_value_update_frequency_preference_1_hour</item>
+        <item>@string/entry_value_update_frequency_preference_6_hour</item>
+        <item>@string/entry_value_update_frequency_preference_12_hour</item>
+        <item>@string/entry_value_update_frequency_preference_1_day</item>
+    </string-array>
+</resources>

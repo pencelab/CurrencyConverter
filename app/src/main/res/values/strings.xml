@@ -6,7 +6,15 @@
     <string name="format_date">MM-dd-yyyy hh:mm</string>
 
     <string name="label_settings">Settings</string>
-    <string name="label_pref_service_title">Service</string>
-    <string name="label_pref_service_summary">Keep service running.</string>
+    <string name="label_pref_category_services">Services</string>
+    <string name="label_pref_service_http_requester_title">HTTP Requester</string>
+    <string name="label_pref_service_http_requester_summary">Keep service running after closing application.</string>
+    <string name="label_pref_service_http_requester_frequency_title">Currency Conversion Data Update Frequency</string>
+    <string name="label_pref_service_http_requester_frequency_summary">Frequency for updating currency conversion data.</string>
+
+    <string name="entry_update_frequency_preference_1_hour">1 hour</string>
+    <string name="entry_update_frequency_preference_6_hour">6 hours</string>
+    <string name="entry_update_frequency_preference_12_hour">12 hours</string>
+    <string name="entry_update_frequency_preference_1_day">1 day</string>
 
 </resources>
