@@ -46,6 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     // Test helpers for LiveData
     androidTestImplementation "android.arch.core:core-testing:$lifecycleVersion"
 
@@ -72,6 +73,7 @@ dependencies {
     //Support
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation "com.android.support:design:27.1.1"
 
     //REST Interactions
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -98,7 +100,5 @@ dependencies {
     //Mockito
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
-
-
 
 }

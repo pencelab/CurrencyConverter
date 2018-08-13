@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/currency_conversions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/currency_conversion_base"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/general_margin">
+
+            <TextView
+                android:id="@+id/label_currency_conversion_base"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/label_for_info_margin"
+                android:text="@string/label_currency_conversion_base"
+                android:textSize="@dimen/text_size_label_for_info"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/conversion_code_base"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_label_for_info"
+                android:completionThreshold="1"
+                android:maxLines="1"
+                android:nextFocusDown="@id/conversion_code_target"
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
+
+            <TextView
+                android:id="@+id/conversion_name_base"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/currency_conversion_target"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/general_margin">
+
+            <TextView
+                android:id="@+id/label_currency_conversion_target"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/label_for_info_margin"
+                android:text="@string/label_currency_conversion_target"
+                android:textSize="@dimen/text_size_label_for_info"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/conversion_code_target"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_label_for_info"
+                android:completionThreshold="1"
+                android:maxLines="1"
+                android:nextFocusDown="@id/button_add_conversion"
+                android:inputType="text"
+                android:imeOptions="actionDone"/>
+
+            <TextView
+                android:id="@+id/conversion_name_target"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_add_conversion"
+        android:layout_below="@+id/currency_conversions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_text_add_currency_conversion"/>
+
+</RelativeLayout>

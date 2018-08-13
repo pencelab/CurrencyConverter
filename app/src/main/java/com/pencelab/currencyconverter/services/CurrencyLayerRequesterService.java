@@ -65,6 +65,7 @@ public class CurrencyLayerRequesterService extends Service {
     }
 
     public boolean isStarted(){
+        Utils.log("isStarted method has been called!!!!");//TODO delete this
         return this.isStarted;
     }
 
@@ -77,6 +78,7 @@ public class CurrencyLayerRequesterService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Utils.log("CREATING SERVICE...");//TODO delete this
         this.disposables = new CompositeDisposable();
         try {
             this.updateFrequency = Integer.parseInt(getString(R.string.entry_value_update_frequency_preference_1_day));
@@ -100,6 +102,7 @@ public class CurrencyLayerRequesterService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Utils.log("SERVICE DESTROYED!!!!");//TODO delete this
         if(this.disposables != null){
             this.disposables.dispose();
             this.disposables = null;
@@ -109,6 +112,7 @@ public class CurrencyLayerRequesterService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+        Utils.log("SERVICE STARTED!!!!");//TODO delete this
         this.isStarted = true;
         this.observeCurrencyLayerService();
 
@@ -182,7 +186,7 @@ public class CurrencyLayerRequesterService extends Service {
     private void setUpdateTimestampsSharedPreferences(){
         Utils.log("Updating TimeStamps Shared Preferences");//TODO delete this
         this.lastUpdateTimestamp = new Date().getTime();
-        this.nextUpdateTimestamp = this.calculateNextUpdateTimestamp();
+        this.nextUpdateTimestamp = this.calculateNextUpdateTimestamp(this.lastUpdateTimestamp, this.updateFrequency, this.timeUnitInterval);
 
         SharedPreferences sp = this.getSharedPreferences(SERVICE_CONTROL_PREFERENCES, Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -193,7 +197,7 @@ public class CurrencyLayerRequesterService extends Service {
 
     private void setNextUpdateTimestampSharedPreference(){
         Utils.log("Updating Next Update TimeStamp Shared Preference");//TODO delete this
-        this.nextUpdateTimestamp = this.calculateNextUpdateTimestamp();
+        this.nextUpdateTimestamp = this.calculateNextUpdateTimestamp(this.lastUpdateTimestamp, this.updateFrequency, this.timeUnitInterval);
 
         SharedPreferences sp = this.getSharedPreferences(SERVICE_CONTROL_PREFERENCES, Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -201,8 +205,8 @@ public class CurrencyLayerRequesterService extends Service {
         editor.commit();
     }
 
-    private long calculateNextUpdateTimestamp(){
-        return this.lastUpdateTimestamp + this.updateFrequency * this.timeUnitInterval;
+    long calculateNextUpdateTimestamp(long lastUpdateTimestamp, int updateFrequency, long timeUnitInterval){
+        return lastUpdateTimestamp + updateFrequency * timeUnitInterval;
     }
 
 }

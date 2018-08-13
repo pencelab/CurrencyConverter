@@ -21,4 +21,13 @@
     <string name="entry_update_frequency_preference_1_day">1 día</string>
     <string name="entry_value_update_frequency_preference_1_day" translatable="false">24</string>
 
+    <string name="label_currency_conversion_empty_text">Agrega una conversión de monedas usando el botón +</string>
+
+    <string name="title_activity_add_conversion">Conversión de Moneda</string>
+
+    <string name="label_currency_conversion_base">Moneda Base</string>
+    <string name="label_currency_conversion_target">Moneda Objetivo</string>
+
+    <string name="button_text_add_currency_conversion">Añadir</string>
+
 </resources>

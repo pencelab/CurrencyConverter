@@ -11,4 +11,11 @@
 
     <dimen name="text_size_card_view_small_info">12sp</dimen>
 
+    <dimen name="text_size_label_for_info">20sp</dimen>
+    <dimen name="label_for_info_margin">20dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="general_margin">16dp</dimen>
+
 </resources>

@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".view.CurrencyMonitorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".view.AddConversionActivity"
+            android:label="@string/title_activity_add_conversion" />
+
         <activity android:name=".view.SettingsActivity" />
 
         <service
             android:name=".services.CurrencyLayerRequesterService"
             android:enabled="true"
-            android:stopWithTask="false">
-        </service>
+            android:stopWithTask="false"></service>
+
 
     </application>
 

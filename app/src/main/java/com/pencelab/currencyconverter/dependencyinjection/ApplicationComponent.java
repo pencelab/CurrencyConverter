@@ -13,6 +13,7 @@ import com.pencelab.currencyconverter.model.db.repository.CurrencyConversionRepo
 import com.pencelab.currencyconverter.model.db.repository.CurrencyRepository;
 import com.pencelab.currencyconverter.model.db.repository.WeatherDatabase;
 import com.pencelab.currencyconverter.model.db.repository.WeatherRepository;
+import com.pencelab.currencyconverter.view.AddConversionActivity;
 import com.pencelab.currencyconverter.view.CurrencyMonitorActivity;
 import com.pencelab.currencyconverter.viewmodel.CurrencyConversionViewModelFactory;
 import com.pencelab.currencyconverter.viewmodel.CurrencyViewModelFactory;
@@ -26,6 +27,7 @@ import dagger.Component;
 public interface ApplicationComponent {
 
     void inject(CurrencyMonitorActivity target);
+    void inject(AddConversionActivity target);
 
     CurrenciesDatabase currenciesDatabase();
     CurrencyDao currencyDao();

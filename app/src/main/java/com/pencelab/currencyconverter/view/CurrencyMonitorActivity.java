@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.pencelab.currencyconverter.R;
 import com.pencelab.currencyconverter.common.Utils;
@@ -23,10 +27,13 @@ import com.pencelab.currencyconverter.viewmodel.CurrencyConversionViewModelFacto
 import com.pencelab.currencyconverter.viewmodel.CurrencyViewModel;
 import com.pencelab.currencyconverter.viewmodel.CurrencyViewModelFactory;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -35,10 +42,14 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
     @BindView(R.id.currency_conversion_recycler_view)
     RecyclerView recyclerView;
 
+    @BindView(R.id.label_currency_conversion_empty)
+    TextView currencyConversionEmptyLabel;
+
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+
     private LinearLayoutManager layoutManager;
     private CurrencyConversionDataAdapter currencyConversionDataAdapter;
-
-    private String accessKey = "8602e06a75aa63372e10373e989426b5";
 
     private CompositeDisposable disposables;
 
@@ -88,8 +99,8 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
         this.currencyConversionDataAdapter = new CurrencyConversionDataAdapter();
         this.recyclerView.setAdapter(this.currencyConversionDataAdapter);
 
-        this.currencyConversionViewModel = ViewModelProviders.of(this, currencyConversionViewModelFactory).get(CurrencyConversionViewModel.class);
-        this.currencyViewModel = ViewModelProviders.of(this, currencyViewModelFactory).get(CurrencyViewModel.class);
+        this.currencyConversionViewModel = ViewModelProviders.of(this, this.currencyConversionViewModelFactory).get(CurrencyConversionViewModel.class);
+        this.currencyViewModel = ViewModelProviders.of(this, this.currencyViewModelFactory).get(CurrencyViewModel.class);
     }
 
     @Override
@@ -120,13 +131,25 @@ public class CurrencyMonitorActivity extends AppCompatActivity {
         this.disposables.add(
                 this.currencyConversionViewModel.getLatestConversions()
                     .subscribeOn(Schedulers.single())
-                    .subscribe(list -> {
-                        for (CurrencyConversionPlus ccp : list){
-                            if (this.currencyConversionDataAdapter.add(ccp))
-                                this.recyclerView.smoothScrollToPosition(0);
-                        }
-                    })
+                    .subscribe(list -> this.processCurrencyConversionPlusList(list))
         );
+    }
+
+    private void processCurrencyConversionPlusList(@NonNull final List<CurrencyConversionPlus> list){
+        if (!list.isEmpty()){
+            this.currencyConversionEmptyLabel.setVisibility(View.GONE);
+            this.recyclerView.setVisibility(View.VISIBLE);
+            for (CurrencyConversionPlus ccp : list) {
+                if (this.currencyConversionDataAdapter.add(ccp))
+                    this.recyclerView.smoothScrollToPosition(0);
+            }
+        }
+    }
+
+    @OnClick(R.id.fab)
+    void fabOnClick(){
+        Intent intent = new Intent(this, AddConversionActivity.class);
+        startActivity(intent);
     }
 
     @Override
